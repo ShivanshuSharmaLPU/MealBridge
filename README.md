@@ -159,7 +159,8 @@ The **Admin Panel** allows administrators to manage the platform.
   
 📁 Project Structure
 
-MealBridge
+```
+  MealBridge
 │
 ├── client # Customer frontend
 │ ├── components # Reusable UI components
@@ -184,4 +185,4 @@ MealBridge
 ├── orders # Order records
 └── food_items # Menu inventory
     ├── orders             # Order records
-    └── food_items         # Menu inventory
+    └── food_items         # Menu inventory ```
