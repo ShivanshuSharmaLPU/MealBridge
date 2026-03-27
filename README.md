@@ -161,25 +161,27 @@ The **Admin Panel** allows administrators to manage the platform.
 
 MealBridge
 │
-├── client                 # Customer frontend
-│   ├── components         # Reusable UI components
-│   ├── pages              # Application pages
-│   ├── context            # Global state management
-│   └── services           # API calls
+├── client # Customer frontend
+│ ├── components # Reusable UI components
+│ ├── pages # Application pages
+│ ├── context # Global state management
+│ └── services # API calls
 │
-├── admin                  # Admin dashboard
-│   ├── components         # Admin UI components
-│   ├── pages              # Admin pages
-│   └── services           # Admin API calls
+├── admin # Admin dashboard
+│ ├── components # Admin UI components
+│ ├── pages # Admin pages
+│ └── services # Admin API calls
 │
-├── server                 # Backend server
-│   ├── controllers        # Business logic
-│   ├── routes             # API routes
-│   ├── models             # Database schemas
-│   ├── middleware         # Authentication middleware
-│   └── config             # Database and server configuration
+├── server # Backend server
+│ ├── controllers # Business logic
+│ ├── routes # API routes
+│ ├── models # Database schemas
+│ ├── middleware # Authentication middleware
+│ └── config # Database and server configuration
 │
 └── database
-    ├── users              # User data
+├── users # User data
+├── orders # Order records
+└── food_items # Menu inventory
     ├── orders             # Order records
     └── food_items         # Menu inventory
