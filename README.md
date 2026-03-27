@@ -185,4 +185,5 @@ The **Admin Panel** allows administrators to manage the platform.
 ├── orders # Order records
 └── food_items # Menu inventory
     ├── orders             # Order records
-    └── food_items         # Menu inventory ```
+    └── food_items         # Menu inventory
+```
