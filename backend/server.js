@@ -2,7 +2,7 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import { connectDB } from "./config/db.js"; // MongoDB connection
+import { connectDB } from "./config/db.js";
 import foodRouter from "./routes/foodRoute.js";
 import userRouter from "./routes/userRoute.js";
 import cartRouter from "./routes/cartRoute.js";
@@ -15,9 +15,17 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 4000;
 
-// Middleware
+// ✅ CORS: allow requests only from your frontend
+app.use(
+  cors({
+    origin: process.env.FRONTEND_URL || "*", // fallback to * if FRONTEND_URL not set
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
+
+// Middleware to parse JSON
 app.use(express.json());
-app.use(cors());
 
 // Serve static images
 app.use("/images", express.static("uploads"));
