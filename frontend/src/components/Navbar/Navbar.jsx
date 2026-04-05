@@ -33,7 +33,12 @@ const Navbar = ({setShowLogin}) => {
         </div>
 
         {/* ✅ Admin Button */}
-        <button className='admin-btn' onClick={() => navigate('/admin')}>Admin</button>
+      <button
+  className="admin-btn"
+  onClick={() => window.location.href = "https://meal-bridge-three.vercel.app/admin"}
+>
+  Admin
+</button>
 
         {!token
           ? <button onClick={() => setShowLogin(true)}>Sign up</button>
