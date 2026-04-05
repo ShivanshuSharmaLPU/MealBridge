@@ -1,3 +1,19 @@
+.navbar .admin-btn {
+  background: tomato;
+  font-size: 15px;
+  color: white;
+  border: 1px solid tomato;
+  padding: 10px 24px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.navbar .admin-btn:hover {
+  background-color: #e8432d;
+}
+
+
 .navbar{
     padding: 20px 0px;
     display: flex;

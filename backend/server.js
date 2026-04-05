@@ -1,39 +1,42 @@
+// server.js
 import express from "express";
 import cors from "cors";
-import { connectDB } from "./config/db.js";
+import dotenv from "dotenv";
+import { connectDB } from "./config/db.js"; // MongoDB connection
 import foodRouter from "./routes/foodRoute.js";
 import userRouter from "./routes/userRoute.js";
-import 'dotenv/config'
 import cartRouter from "./routes/cartRoute.js";
 import orderRouter from "./routes/orderRoute.js";
 
-// app config
-const app = express();
-const port = 4000;
+// Load environment variables
+dotenv.config();
 
-// middleware
+// App config
+const app = express();
+const PORT = process.env.PORT || 4000;
+
+// Middleware
 app.use(express.json());
 app.use(cors());
 
-// db connection
+// Serve static images
+app.use("/images", express.static("uploads"));
+
+// Connect to MongoDB
 connectDB();
 
-// api endpoints
-app.use("/api/food", foodRouter); // Added missing '/'
-app.use("/images", express.static('uploads'));
-app.use("/api/user",userRouter);
-app.use("/api/cart",cartRouter);
-app.use("/api/order",orderRouter);
+// API Endpoints
+app.use("/api/food", foodRouter);
+app.use("/api/user", userRouter);
+app.use("/api/cart", cartRouter);
+app.use("/api/order", orderRouter);
 
-
-
+// Test route
 app.get("/", (req, res) => {
   res.send("API Working");
 });
 
-app.listen(port, () => {
-  console.log(`Server Started on http://localhost:${port}`);
+// Start server
+app.listen(PORT, () => {
+  console.log(`Server Started on http://localhost:${PORT}`);
 });
-
-// Store sensitive info like MongoDB URI in environment variables
-// Example: process.env.MONGODB_URI

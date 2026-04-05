@@ -1,5 +1,17 @@
 import mongoose from "mongoose";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 export const connectDB = async () => {
-    await mongoose.connect('mongodb+srv://shivanshu:7075@cluster0.8ts9w.mongodb.net/food-del').then(()=>console.log("DB Connected"));
-}
+  try {
+    // Build MongoDB URI
+    const uri = `mongodb+srv://${process.env.MONGO_USER}:${encodeURIComponent(process.env.MONGO_PASS)}@${process.env.MONGO_CLUSTER}/${process.env.MONGO_DB}?retryWrites=true&w=majority`;
+
+    await mongoose.connect(uri);
+    console.log("DB Connected");
+  } catch (err) {
+    console.error("DB Connection Error:", err);
+    process.exit(1);
+  }
+};
