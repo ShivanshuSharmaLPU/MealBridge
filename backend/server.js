@@ -27,11 +27,19 @@ app.use(
 // Middleware to parse JSON
 app.use(express.json());
 
+// Optional: simple request logger for debugging
+app.use((req, res, next) => {
+  console.log(`${req.method} ${req.url}`);
+  next();
+});
+
 // Serve static images
 app.use("/images", express.static("uploads"));
 
 // Connect to MongoDB
-connectDB();
+connectDB()
+  .then(() => console.log("MongoDB Connected"))
+  .catch((err) => console.error("DB Connection Error:", err));
 
 // API Endpoints
 app.use("/api/food", foodRouter);
